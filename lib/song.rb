@@ -36,6 +36,28 @@ class Song
     return self.find_by_name(name) if self.find_by_name(name) != nil
         self.create_by_name(name)
   end
+  
+  def self.alphabetical
+    self.all.sort_by {|song| song.name}
+  end
+  
+  def self.new_from_filename(song)
+    song_info = song.gsub(".mp3","").split(" - ")
+    song = self.new_by_name(song_info[1])
+    song.artist_name = song_info[0]
+    song
+  end
+  
+  def self.create_from_filename(song)
+    song_info = song.gsub(".mp3","").split(" - ")
+    song = self.create_by_name(song_info[1])
+    song.artist_name = song_info[0]
+  end
+  
+  def self.destroy_all
+    @@all.clear
+  end
+
 end
 
 
