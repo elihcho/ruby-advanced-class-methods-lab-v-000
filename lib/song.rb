@@ -30,10 +30,10 @@ class Song
 
   def self.find_by_name(name)
     @@all.each do |song|
-      if song.name == name
-        return song
-      elsif @@all.include?(name) == false
+      if @@all.include?(name) == false
         return false
+      elsif song.name == name
+        return song
       end
     end
   end
