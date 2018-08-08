@@ -33,7 +33,7 @@ class Song
       if song.name == name
         return song
       else
-        false
+        return false
       end
     end
   end
